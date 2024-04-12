@@ -41,9 +41,13 @@ if __name__ == "__main__":
     t = 0.3
     k = 0.001
     h = 0.05
+    NUM_STEPS_X = int(L / h)
 
     t_values, x_values, u_values = implisitt(L, t, k, h)
             
     fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
     surf = ax.plot_surface(t_values, x_values, u_values, cmap=cm.coolwarm, linewidth=0, antialiased=False)
+    plt.show()
+
+    plt.plot(np.arange(0, t, k), u_values[:, NUM_STEPS_X // 2])
     plt.show()

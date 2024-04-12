@@ -31,7 +31,7 @@ def eksplisitt(L, t, k, h):
 
 
 if __name__ == "__main__":
-    L = 1
+    L = np.pi
     t = 0.3
     k = 0.001
     h = 0.1
@@ -41,4 +41,7 @@ if __name__ == "__main__":
     fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
 
     surf = ax.plot_surface(t_values, x_values, u_values, cmap=cm.coolwarm, linewidth=0, antialiased=False)
+    plt.show()
+
+    plt.plot(np.arange(0, t, k), u_values[:, NUM_STEPS_X // 2])
     plt.show()

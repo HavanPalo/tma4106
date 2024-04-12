@@ -4,8 +4,6 @@ from matplotlib import cm
 from matplotlib.ticker import LinearLocator
 
 # Definer parameterne
-
-
 def crank_nicolson(L, t, k, h):
     NUM_STEPS_X = int(L / h)
     NUM_STEPS_T = int(t / k)
@@ -21,7 +19,6 @@ def crank_nicolson(L, t, k, h):
     # sett opp u_values[0] - arrayen 
 
     # x_values = np.linspace(0, L, NUM_STEPS_X)
-
     for j in range(NUM_STEPS_T - 1):
         u_values[j+1][0] = 0
         u_values[j+1][NUM_STEPS_X - 1] = 0
@@ -40,7 +37,6 @@ def crank_nicolson(L, t, k, h):
             last_values = np.array(implicit)
             for i in range(1, NUM_STEPS_X - 1):
                 implicit[i] = u_values[j][i]   + k / np.power(h, 2) * (implicit[i + 1] - 2 * implicit[i] + implicit[i - 1])
-        
         # Crank Nicolson blir gjennomsnitt av eksplisitt og implisitt
         # Med numpy regner den ut uttrykket for hver [i]
         u_values[j+1] = (explicit + implicit) / 2
@@ -50,7 +46,7 @@ if __name__ == "__main__":
     L = np.pi
     t = 0.3
     k = 0.001
-    h = 0.05
+    h = 0.01
     NUM_STEPS_X = int(L / h)
     NUM_STEPS_T = int(t / k)
     print("Heiii")
